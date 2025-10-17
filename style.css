@@ -317,4 +317,35 @@ body::before{
   .footer{ padding: 22px 0 calc(48px + env(safe-area-inset-bottom)) !important; }
 }
 
+/* === 背景は固定、チャットのみスクロール、フッターは自然に下へ === */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh; /* 全体の高さは必要分だけ確保 */
+}
+
+.chat {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 24px; /* フッターと重ならないように余白 */
+}
+
+/* ここが重要 */
+.footer {
+  position: relative; /* ← fixed や sticky は使わない！ */
+  background: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  text-align: center;
+  padding: 24px 0 calc(60px + env(safe-area-inset-bottom)) !important; /* ← 下余白多め */
+}
+
+/* スマホでの余白微調整 */
+@media (max-width: 640px) {
+  .footer {
+    padding: 28px 0 calc(70px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
 }
