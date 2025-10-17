@@ -112,3 +112,12 @@ a.next:hover, a.prev:hover{ opacity:1; background:rgba(255,255,255,.2); }
   .chat{ padding-bottom: 28px; }
   .footer{ padding: 28px 0 calc(70px + env(safe-area-inset-bottom)); }
 }
+
+/* === iOSで背景が拡大して見える現象の修正 === */
+body::before {
+  transform: none !important;         /* ← Safariのズーム補正防止 */
+  background-attachment: scroll !important; /* ← fixedの代替で安定描画 */
+  background-position: center center !important;
+  background-size: cover !important;
+  will-change: auto !important;
+}
