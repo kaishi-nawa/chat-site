@@ -168,6 +168,42 @@ a.next:hover, a.prev:hover {
     line-height: 1.95;
   }
 
+  /* --- スマホ最適化（〜640px）: 内側スクロールをやめる --- */
+@media (max-width: 640px) {
+  /* 高さは100dvhでアドレスバーの揺れ対策 */
+  .chat-container {
+    min-height: 100dvh;
+    height: auto;                 /* ← 重要：固定高さを外す */
+    padding-bottom: calc(12px + env(safe-area-inset-bottom)); /* セーフエリア対応 */
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+
+  /* 内側スクロールやめて、ページ全体をスクロールさせる */
+  .chat {
+    overflow: visible;            /* ← 重要：auto を解除 */
+    padding-bottom: 16px;         /* フッターと被らないよう余白 */
+    -webkit-overflow-scrolling: auto;
+  }
+
+  /* フッターは画面下に吸着（ページスクロールに追従） */
+  .footer {
+    position: sticky;
+    bottom: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.35),
+      rgba(0,0,0,0) 60%
+    ); /* 下部にだけ薄いグラデーション → 灰色の帯に見えない */
+    padding: 14px 0 calc(14px + env(safe-area-inset-bottom));
+    z-index: 10;
+  }
+
+  /* iOSのfixed背景ガクつき回避は維持 */
+  body { background-attachment: scroll; }
+}
+
+
   /* iOS Safariのfixed背景カクつき対策 */
   body {
     background-attachment: scroll;
