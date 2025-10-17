@@ -264,4 +264,57 @@ a.next:hover, a.prev:hover {
   body {
     background-attachment: scroll;
   }
+
+  /* === 1) 背景を擬似要素で固定（iOSでも安定） === */
+body {
+  /* 既存の body 背景指定は残してOKですが、下の固定レイヤーが優先されます */
+}
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;                /* 画面全体に敷く */
+  z-index: -1;             /* 全コンテンツの背面へ */
+  background:
+    linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.3)),
+    url("./background.jpg") center/cover no-repeat;
+  will-change: transform;  /* iOSのチラつき抑制 */
+  transform: translateZ(0);
+}
+
+/* === 2) 画面は常に1画面ぶんの高さ。チャットだけスクロール === */
+.chat-container{
+  height: 100dvh;          /* デバイス実測vh。iOSのアドレスバー対策 */
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  /* 既存の半透明黒＆ぼかしはそのまま活かせます */
+}
+
+.chat{
+  flex: 1;
+  overflow-y: auto;        /* ← 中身だけスクロール */
+  -webkit-overflow-scrolling: touch; /* iOSで慣性スクロール */
+  padding-bottom: 16px;    /* フッターとかぶらないよう軽く余白 */
+}
+
+/* === 3) フッターは固定しない（自然に下にいる）＋余白広め === */
+.footer{
+  position: relative;      /* sticky/fixed を使わない */
+  background: none !important;               /* 黒帯を消す */
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  padding: 18px 0 calc(40px + env(safe-area-inset-bottom)) !important; /* 下にゆとり */
+}
+
+/* === 4) ヘッダー下に余白を追加（読みやすさUP） === */
+.header{
+  margin-bottom: 20px;     /* 欲しければ数値を増減してOK */
+}
+
+/* === 5) モバイル微調整 === */
+@media (max-width: 640px){
+  .chat{ padding-bottom: 20px; }
+  .footer{ padding: 22px 0 calc(48px + env(safe-area-inset-bottom)) !important; }
+}
+
 }
