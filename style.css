@@ -243,6 +243,21 @@ a.next:hover, a.prev:hover {
   }
 }
 
+/* --- フッター背景の黒帯を消して、余白を広げる --- */
+.footer {
+  background: none !important; /* ← 黒帯を削除 */
+  backdrop-filter: none !important; /* ← ぼかしも削除 */
+  -webkit-backdrop-filter: none !important;
+  padding: 20px 0 calc(40px + env(safe-area-inset-bottom)) !important; /* ← 下余白を広めに */
+}
+
+/* --- 上部の日付と本文の間に余白を追加 --- */
+.header {
+  margin-bottom: 20px; /* ← 見出し下の間隔を追加 */
+}
+
+/* --- スマホ用：下のボタ*
+
 
 
   /* iOS Safariのfixed背景カクつき対策 */
