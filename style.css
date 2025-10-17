@@ -1,0 +1,175 @@
+/* ========== ベース設定 ========== */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: "Noto Sans JP", sans-serif;
+  color: #fff;
+  background:
+    linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+    url("./background.jpg") center/cover no-repeat fixed;
+  min-height: 100dvh;
+}
+
+/* ========== コンテナ（背景ぼかし＆レイアウト） ========== */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  padding: 16px;
+}
+
+/* ========== ヘッダー ========== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+
+/* ========== チャット全体 ========== */
+.chat {
+  overflow-y: auto;
+  flex: 1;
+  margin-top: 10px;
+  padding: 0 10px;
+}
+
+/* ========== メッセージブロック ========== */
+.msg {
+  display: grid;
+  grid-template-columns: 48px 1fr; /* アバター + 本文 */
+  gap: 12px;
+  align-items: start;
+  margin-bottom: 28px;
+}
+
+/* 話者が切り替わる部分の余白を広く */
+.msg.switch {
+  margin-top: 8px;
+  margin-bottom: 36px;
+}
+
+/* ========== アバター ========== */
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: rgba(255,255,255,0.25);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+  flex-shrink: 0;
+}
+
+/* ========== 吹き出しエリア ========== */
+.bubble {
+  background: rgba(0,0,0,0.35);
+  border-radius: 14px;
+  padding: 12px 14px;
+  backdrop-filter: blur(0.5px);
+}
+
+.name {
+  font-weight: 600;
+  font-size: 15px;
+  margin: 0 0 2px 0;
+}
+
+.time {
+  font-size: 12px;
+  opacity: 0.7;
+  margin: 0 0 8px 0;
+}
+
+.text {
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.9;
+}
+
+.green {
+  color: #00ff7f;
+  font-weight: 700;
+}
+
+/* ========== フッター ========== */
+.footer {
+  text-align: center;
+  padding: 12px 0;
+}
+
+a.next, a.prev {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 0 24px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #fff;
+  opacity: 0.8;
+  transition: all 0.2s ease;
+}
+
+a.next:hover, a.prev:hover {
+  opacity: 1;
+  background: rgba(255,255,255,0.2);
+}
+
+/* ========== スクロールバー控えめ表示 ========== */
+.chat::-webkit-scrollbar {
+  width: 6px;
+}
+.chat::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.3);
+  border-radius: 3px;
+}
+.chat::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.5);
+}
+
+/* ========== スマホ最適化（～640px） ========== */
+@media (max-width: 640px) {
+  .chat-container {
+    padding: 12px;
+    backdrop-filter: blur(2px);
+  }
+
+  .msg {
+    grid-template-columns: 40px 1fr;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  img.avatar {
+  background: none;
+}
+
+  .avatar {
+    width: 38px;
+    height: 38px;
+  }
+
+  .name {
+    font-size: clamp(13px, 3.6vw, 15px);
+  }
+
+  .time {
+    font-size: clamp(11px, 3.2vw, 12px);
+  }
+
+  .text {
+    font-size: clamp(13px, 3.8vw, 15px);
+    line-height: 1.95;
+  }
+
+  /* iOS Safariのfixed背景カクつき対策 */
+  body {
+    background-attachment: scroll;
+  }
+}

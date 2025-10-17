@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>内部チャット記録 2/3</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="chat-container">
+    <div class="header">
+      <span>2073年 7月10日 金曜日</span>
+      <span class="page">2/3</span>
+    </div>
+
+    <div class="chat" role="log" aria-live="polite">
+      <!-- 黒崎 -->
+      <div class="msg" data-speaker="kuro">
+        <img class="avatar" src="./avatars/kuro.jpg" alt="黒崎誠のアイコン">
+        <div class="bubble">
+          <p class="name">黒崎誠</p>
+          <p class="time">2073/07/10 11:12:05</p>
+          <p class="text">
+            No.1用のドナー候補リスト、最終版を提出します。現時点で臨床基準（免疫・神経適合値ともに70%以上）を満たすのは
+            <span class="green">No.2の予定ドナーのみ</span>です。
+          </p>
+        </div>
+      </div>
+
+      <!-- 津崎（話者切替） -->
+      <div class="msg switch" data-speaker="tsu">
+        <img class="avatar" src="./avatars/tsu.jpg" alt="津崎岳人のアイコン">
+        <div class="bubble">
+          <p class="name">津崎岳人</p>
+          <p class="time">2073/07/10 11:13:52</p>
+          <p class="text">他の候補は全て基準未満か？</p>
+        </div>
+      </div>
+
+      <!-- 黒崎（話者切替） -->
+      <div class="msg switch" data-speaker="kuro">
+        <img class="avatar" src="./avatars/kuro.jpg" alt="黒崎誠のアイコン">
+        <div class="bubble">
+          <p class="name">黒崎誠</p>
+          <p class="time">2073/07/10 11:14:12</p>
+          <p class="text">はい。次点は58%で臨床リスクが高すぎます。安全域を大幅に下回っています。</p>
+        </div>
+      </div>
+
+      <!-- 津崎（話者切替） -->
+      <div class="msg switch" data-speaker="tsu">
+        <img class="avatar" src="./avatars/tsu.jpg" alt="津崎岳人のアイコン">
+        <div class="bubble">
+          <p class="name">津崎岳人</p>
+          <p class="time">2073/07/10 11:14:31</p>
+          <p class="text">手術まで時間がない。No.2の予定ドナーをNo.1に割り当てろ。No.1の手術は予定どおり実施する。</p>
+        </div>
+      </div>
+
+      <!-- 黒崎（話者切替） -->
+      <div class="msg switch" data-speaker="kuro">
+        <img class="avatar" src="./avatars/kuro.jpg" alt="黒崎誠のアイコン">
+        <div class="bubble">
+          <p class="name">黒崎誠</p>
+          <p class="time">2073/07/10 11:14:58</p>
+          <p class="text">了解です。ただし、<span class="green">No.2側の移植計画</span>が空になります。</p>
+        </div>
+      </div>
+
+      <!-- 津崎（話者切替） -->
+      <div class="msg switch" data-speaker="tsu">
+        <img class="avatar" src="./avatars/tsu.jpg" alt="津崎岳人のアイコン">
+        <div class="bubble">
+          <p class="name">津崎岳人</p>
+          <p class="time">2073/07/10 11:15:16</p>
+          <p class="text">構わない。まずは手術を成功させる。No.2は後で調整する。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <a href="index.html" class="prev">戻る</a>
+      <a href="page3.html" class="next">進む</a>
+    </div>
+  </div>
+</body>
+</html>
