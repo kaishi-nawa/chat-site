@@ -226,6 +226,23 @@ a.next:hover, a.prev:hover {
   }
 }
 
+/* --- モバイル：フッター固定をやめて自然に流す --- */
+@media (max-width: 640px) {
+  .chat-container {
+    min-height: 100dvh;
+    height: auto; 
+    padding-bottom: calc(28px + env(safe-area-inset-bottom)); /* ← 下余白を広めに */
+  }
+  .chat {
+    overflow: visible;              /* 内側スクロール解除 */
+    padding-bottom: 24px;           /* フッターと干渉しない余白 */
+  }
+  .footer {
+    position: static;               /* ← 固定をやめる */
+    padding: 14px 0 calc(24px + env(safe-area-inset-bottom));
+  }
+}
+
 
 
   /* iOS Safariのfixed背景カクつき対策 */
