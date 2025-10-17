@@ -278,3 +278,28 @@ a.link:hover {
   color: #fff;              /* hoverしても変わらない */
   opacity: 1;
 }
+
+/* --- 通常の緑リンク（既存） --- */
+a.link {
+  color: #00ff7f;
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+a.link:hover {
+  opacity: 0.7;
+}
+
+/* --- 白リンク（ステルスリンク） --- */
+a.link-white {
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 400;
+  cursor: pointer;
+  transition: none;
+}
+a.link-white:hover {
+  color: #fff !important;
+  opacity: 1 !important;
+}
