@@ -265,3 +265,16 @@ a.link {
 a.link:hover {
   opacity: 0.7;
 }
+
+/* --- ステルスリンク（白文字・下線なし・hover変化なし） --- */
+a.link {
+  color: #fff;              /* ← 白文字に変更 */
+  text-decoration: none;    /* 下線なし */
+  cursor: pointer;          /* ポインタだけ出す */
+  transition: none;         /* アニメーションなし */
+}
+
+a.link:hover {
+  color: #fff;              /* hoverしても変わらない */
+  opacity: 1;
+}
