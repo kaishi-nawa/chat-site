@@ -121,3 +121,26 @@ body::before {
   background-size: cover !important;
   will-change: auto !important;
 }
+
+/* --- iOSの背景ズーム対策（小さいビューポート基準に固定） --- */
+body::before{
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100svh !important;           /* ← ここがキモ */
+  background-position: center center !important;
+  background-size: cover !important;
+  background-attachment: scroll !important; /* fixedは使わないほうが安定 */
+  transform: none !important;               /* GPU最適化をオフに */
+  will-change: auto !important;
+}
+
+/* 画面本体の“縦”も small-viewport 基準に */
+.chat-container{
+  min-height: 100svh !important;       /* ← 100dvh を上書き */
+}
+
+/* 任意：スクロール時の再レイアウト揺れをさらに抑える */
+@supports (height: 100svh) {
+  html, body { height: auto !important; }
+}
