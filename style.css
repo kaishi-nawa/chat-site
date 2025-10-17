@@ -203,6 +203,30 @@ a.next:hover, a.prev:hover {
   body { background-attachment: scroll; }
 }
 
+/* --- モバイル：stickyのまま、背景をしっかり敷く＋下余白UP --- */
+@media (max-width: 640px) {
+  .chat-container {
+    min-height: 100dvh;
+    height: auto;
+    padding-bottom: 0; /* 背景はフッター側で持つ */
+  }
+  .chat {
+    overflow: visible;
+    padding-bottom: calc(64px + env(safe-area-inset-bottom)); /* ← ボタンが被らない余白 */
+  }
+  .footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    /* 背景をしっかり敷いて“文字だけ浮く”問題を解消 */
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    padding: 14px 0 calc(26px + env(safe-area-inset-bottom)); /* ← 下余白を広めに */
+  }
+}
+
+
 
   /* iOS Safariのfixed背景カクつき対策 */
   body {
