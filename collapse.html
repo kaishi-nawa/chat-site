@@ -4,18 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>精神暴走事故（Psychic Resonance Collapse）</title>
-  <link rel="stylesheet" href="./style.css" />
-  
+
+  <!-- 共通CSSを無効化して個別CSSを優先 -->
   <style>
-    /* このページだけ共通の背景レイヤーを殺す */
-body::before { content: none !important; }
+    /* このページだけ共通背景を完全に無効化 */
+    body::before {
+      content: none !important;
+    }
 
     /* === 黒背景・白字ベース === */
     body {
       margin: 0;
       font-family: "Noto Sans JP", sans-serif;
       color: #fff;
-      background: #000;
+      background: #000 !important; /* ← 完全な黒、画像なし */
       min-height: 100dvh;
     }
 
@@ -30,9 +32,9 @@ body::before { content: none !important; }
       box-sizing: border-box;
     }
 
-    /* === 黒背景パネル（チャットと同じスタイル） === */
+    /* === 黒背景パネル === */
     .content-box {
-      background: #000; /* 完全な黒（透明度なし） */
+      background: #000;
       border-radius: 12px;
       max-width: 760px;
       line-height: 1.9;
