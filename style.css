@@ -303,3 +303,72 @@ a.link-white:hover {
   color: #fff !important;
   opacity: 1 !important;
 }
+
+/* ====== Landing（トップの日付選択） ====== */
+.landing{
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 16px;
+  /* 既存と同じ背景トーンを維持（body::before で固定背景を使用中） */
+}
+
+.landing-title{
+  margin: 0 0 28px 0;
+  font-size: clamp(20px, 4.8vw, 32px);
+  letter-spacing: .06em;
+  opacity: .95;
+  text-align: center;
+}
+
+/* ボタン群：黒の半透明（チャットの下地と合わせる） */
+.date-grid{
+  width: 100%;
+  max-width: 840px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.date-btn{
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 20px 12px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #fff;
+  background: rgba(0,0,0,0.55);     /* ← “チャットの下地”系の黒半透明 */
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: transform .15s ease, opacity .15s ease, border-color .15s ease;
+}
+
+.date-btn:hover{
+  transform: translateY(-2px);
+  opacity: .95;
+  border-color: rgba(255,255,255,0.22);
+}
+
+.date-big{
+  font-size: clamp(16px, 3.6vw, 20px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.date-sub{
+  margin-top: 6px;
+  font-size: clamp(12px, 2.8vw, 14px);
+  opacity: .8;
+}
+
+/* モバイル：1列→タブレット：2列→PC：3列 */
+@media (max-width: 640px){
+  .date-grid{ grid-template-columns: 1fr; gap: 12px; max-width: 560px; }
+  .landing{ padding: 24px 16px 40px; }
+}
+@media (min-width: 641px) and (max-width: 960px){
+  .date-grid{ grid-template-columns: repeat(2, 1fr); max-width: 720px; }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>内部チャット記録 1/3</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="chat-container">
+    <div class="header">
+      <span>2073年 7月9日 月曜日</span>
+      <span class="page">1/3</span>
+    </div>
+
+    <div class="chat" role="log" aria-live="polite">
+      <!-- 黒崎 -->
+      <div class="msg" data-speaker="kuro">
+        <!-- アイコン（名前・時間の左） -->
+        <img class="avatar" src="./avatars/kuro.jpg" alt="黒崎誠のアイコン">
+        <!-- 吹き出し -->
+        <div class="bubble">
+          <p class="name">黒崎誠</p>
+          <p class="time">2073/07/09 12:15:40</p>
+          <p class="text">
+            PT-001の予定ドナーについて報告です。遺族の意向で
+            <span class="green">承諾撤回</span>とのこと。提供は不可能になりました。
+          </p>
+        </div>
+      </div>
+
+      <!-- 津崎（スピーカー切替。間隔を広げたい場合の目印に .switch 付与） -->
+      <div class="msg switch" data-speaker="tsu">
+        <img class="avatar" src="./avatars/tsu.jpg" alt="津崎岳人のアイコン">
+        <div class="bubble">
+          <p class="name">津崎岳人</p>
+          <p class="time">2073/07/09 12:18:35</p>
+          <p class="text">それはいつの話だ。詳細は？</p>
+        </div>
+      </div>
+
+      <!-- 黒崎 -->
+      <div class="msg" data-speaker="kuro">
+        <img class="avatar" src="./avatars/kuro.jpg" alt="黒崎誠のアイコン">
+        <div class="bubble">
+          <p class="name">黒崎誠</p>
+          <p class="time">2073/07/09 12:19:41</p>
+          <p class="text">昨夜です。生体データはすでに臨床倫理チームが確認済み。代替候補はまだ見つかっていません。</p>
+        </div>
+      </div>
+
+      <!-- 津崎（スピーカー切替） -->
+      <div class="msg switch" data-speaker="tsu">
+        <img class="avatar" src="./avatars/tsu.jpg" alt="津崎岳人のアイコン">
+        <div class="bubble">
+          <p class="name">津崎岳人</p>
+          <p class="time">2073/07/09 12:20:04</p>
+          <p class="text">
+  わかった。すぐに他の登録候補者を洗え。時間がない。
+  <a href="schedule.html" class="green link">No.1のスケジュールはずらせない。</a>
+  どんなに小さなサンプルでもいい、候補を全て出せ。
+</p>
+        </div>
+      </div>
+
+      <!-- 黒崎 -->
+      <div class="msg" data-speaker="kuro">
+        <img class="avatar" src="./avatars/kuro.jpg" alt="黒崎誠のアイコン">
+        <div class="bubble">
+          <p class="name">黒崎誠</p>
+          <p class="time">2073/07/09 12:20:32</p>
+          <p class="text">承知しました。候補リストを再構築します。結果は明日までに共有します。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <a href="page2.html" class="next">進む</a>
+    </div>
+  </div>
+</body>
+</html>
