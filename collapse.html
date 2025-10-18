@@ -1,134 +1,107 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>精神暴走事故（Psychic Resonance Collapse）</title>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css" />
   <style>
-    /* === このページ専用：共通の固定背景レイヤーを無効化 === */
-    body.collapse-theme::before { content: none !important; }
-
-    /* === 全体設定 === */
-    html, body {
+    /* === 背景を既存デザインに合わせる === */
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow-x: hidden;
-      color: #fff;
       font-family: "Noto Sans JP", sans-serif;
+      color: #fff;
+      background: 
+        linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+        url("./background.jpg") center/cover no-repeat fixed;
+      min-height: 100dvh;
     }
 
-    /* === 赤黒く“呼吸”する背景（ページ固有） === */
-    body.collapse-theme {
-      background:
-        radial-gradient(circle at 50% 40%, rgba(80,0,0,0.45), rgba(0,0,0,0.96) 70%),
-        linear-gradient(180deg, rgba(120,0,0,0.28), rgba(0,0,0,1));
-      background-blend-mode: multiply;
-      background-attachment: fixed;
-      animation: pulseDark 6s ease-in-out infinite;
-    }
-    @keyframes pulseDark {
-      0%, 100% { filter: brightness(1) saturate(1); }
-      50%      { filter: brightness(1.18) saturate(1.35); }
-    }
-
-    /* === レイアウト === */
+    /* === コンテナ === */
     .content-container {
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      min-height: 100vh;
       padding: 40px 20px;
       box-sizing: border-box;
     }
 
-    /* === 中央の黒パネル（うっすら赤光） === */
+    /* === 内容ボックス（チャット背景と同じ） === */
     .content-box {
-      position: relative;
-      max-width: 760px;
-      padding: 36px 28px;
-      background: rgba(10,0,0,0.72);
-      border: 1px solid rgba(255,0,0,0.22);
-      box-shadow: 0 0 42px rgba(255,0,0,0.18);
-      backdrop-filter: blur(6px);
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(4px);
       border-radius: 12px;
+      padding: 36px 28px;
+      max-width: 760px;
       line-height: 1.9;
       text-align: left;
-      animation: fadeUp 1.2s ease both;
     }
-    .content-box::before{
-      content:"";
-      position:absolute; inset:0; border-radius:12px;
-      background: radial-gradient(1200px 600px at 30% 70%, rgba(255,30,30,0.12), transparent 60%);
-      mix-blend-mode: lighten;
-      opacity:.7; animation: shimmer 10s ease-in-out infinite;
-      pointer-events:none;
-    }
-    @keyframes shimmer { 0%,100%{opacity:.5} 50%{opacity:1} }
-    @keyframes fadeUp { from{opacity:0; transform:translateY(18px)} to{opacity:1; transform:none} }
 
-    /* === タイトル（赤い縦ラインは消す） === */
-    .content-box h2{
+    .content-box h2 {
       font-size: clamp(20px, 5vw, 28px);
-      margin: 0 0 22px 0;
-      letter-spacing: .05em;
-      line-height: 1.35;
-      text-align: left;
-      text-shadow: 0 0 14px rgba(255,30,30,0.35); /* 血のような光輪 */
-      border: none; /* ← 縦ライン削除 */
-      padding-left: 0; /* ← 余白もリセット */
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
     }
 
-    /* 本文・色調整（このページは緑を使わず白で統一） */
-    .content-box p{
+    .content-box p {
       font-size: clamp(14px, 3.8vw, 16px);
-      opacity: .95;
-      margin: 0;
-    }
-    .collapse-theme .green { color: #fff; font-weight: inherit; }
-
-    /* フッター・戻るボタン（クリックで淡く赤発光） */
-    .footer{ text-align:center; margin-top: 28px; }
-    a.prev{
-      color:#fff; text-decoration:none; font-size:15px;
-      padding:8px 18px; border-radius:20px;
-      border:1px solid rgba(255,255,255,0.55);
-      opacity:.85; transition: all .25s ease;
-      display:inline-block;
-    }
-    a.prev:hover{
-      opacity:1; background: rgba(255,0,0,0.2);
-      box-shadow: 0 0 10px rgba(255,0,0,0.45);
+      opacity: 0.95;
     }
 
-    /* スマホ調整 */
-    @media (max-width: 640px){
-      .content-box{ padding: 26px 16px; line-height: 1.85; }
-      .content-box h2{ font-size: clamp(18px, 5.2vw, 24px); margin-bottom: 16px; }
-      .footer{ margin-top: 22px; }
+    /* === フッター（ボックスの中に収める） === */
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    a.prev {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 8px 20px;
+      border-radius: 20px;
+      border: 1px solid #fff;
+      opacity: 0.8;
+      transition: all 0.2s ease;
+    }
+
+    a.prev:hover {
+      opacity: 1;
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* スマホ用の余白調整 */
+    @media (max-width: 640px) {
+      .content-box {
+        padding: 28px 16px;
+        line-height: 1.85;
+      }
+      .footer {
+        margin-top: 22px;
+      }
     }
   </style>
 </head>
-<body class="collapse-theme">
+<body>
   <div class="content-container">
     <div class="content-box">
       <h2>精神暴走事故（Psychic Resonance Collapse）</h2>
       <p>
-        2073年8月15日、前半手術群の経過観察期間中、被験体 <span class="green">PT-002</span> において急性の精神暴走が確認された。
-        ドナー由来の人格・記憶断片が意識層に侵入し、強い同一化反応を示したことが原因と推測されている。<br><br>
-        発作発生後、PT-002は病棟内で他の被験体2名（PT-001およびPT-005）を刺殺。
+        2073年8月15日、前半手術群の経過観察期間中、被験体 PT-002 において急性の精神暴走が確認された。
+        <span class="green">ドナー由来の人格・記憶断片が意識層に侵入</span>し、強い同一化反応を示したことが原因と推測されている。<br><br>
+        発作発生後、PT-002は病棟内で他の被験体2名<span class="green">（PT-001およびPT-005）</span>を刺殺。
         同病棟には他の被験体（PT-003、PT-004、PT-006）も滞在していたが、
-        なぜ彼らが襲撃対象とならなかったのかについては、現在も不明とされている。<br><br>
+        <span class="green">なぜ彼らが襲撃対象とならなかったのか</span>については、現在も不明とされている。<br><br>
         事故後、研究施設は直ちに封鎖され、セルフロンティアは外部への情報流出を防ぐため、
         公式発表を行わずに事態の収束を図った。
       </p>
-    </div>
 
-    <div class="footer">
-      <!-- 404回避：必ず“一つ前”へ戻る -->
-      <a href="javascript:history.back()" class="prev">戻る</a>
+      <div class="footer">
+        <a href="javascript:history.back()" class="prev">戻る</a>
+      </div>
     </div>
   </div>
 </body>
