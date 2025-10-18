@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>なぜ彼らが襲撃対象とならなかったのか</title>
+
+  <!-- このページは独立したスタイルで完結。外部背景は使わない -->
+  <style>
+    :root{
+      --link-red:#ff4040;
+      --bg:#fff;
+      --text:#000;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      padding:0;
+      background:var(--bg); /* 完全な白 */
+      color:var(--text);
+      font-family: "Noto Sans JP", sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow:hidden; /* 手で覆う見た目を固定（内スクロールはさせない） */
+    }
+
+    /* 中央の説明ボックス（本文） */
+    .panel{
+      position:relative;
+      z-index:2; /* 手レイヤーの上に出す */
+      max-width:760px;
+      margin:28px auto 0;
+      background:rgba(255,255,255,1); /* 完全白で透けない */
+      padding:28px 22px;
+      border-radius:10px;
+      box-shadow:0 6px 30px rgba(0,0,0,0.06);
+      text-align:left;
+    }
+
+    .panel h2{
+      margin:0 0 10px 0;
+      font-size:clamp(18px,4.6vw,26px);
+      font-weight:700;
+      color:var(--text);
+    }
+
+    .panel p{
+      margin:0 0 10px 0;
+      font-size:clamp(14px,3.6vw,16px);
+      line-height:1.8;
+      color:var(--text);
+    }
+
+    /* リンクは赤のまま、下線無し */
+    .panel a.red-link{
+      color:var(--link-red);
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    /* 戻るボタンをパネル内に配置 */
+    .panel .footer{
+      margin-top:14px;
+      text-align:right;
+    }
+    .panel .prev{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,0.12);
+      background:transparent;
+      color:var(--text);
+      text-decoration:none;
+      font-size:14px;
+    }
+    .panel .prev:hover{ background:rgba(0,0,0,0.04); }
+
+    /* 「手」文字レイヤー（全画面） */
+    .hands-layer{
+      position:fixed;
+      inset:0;
+      z-index:1;
+      pointer-events:none; /* クリックを邪魔しない */
+      overflow:hidden;
+    }
+
+    .hand {
+      position:absolute;
+      user-select:none;
+      font-weight:700;
+      color:rgba(0,0,0,0.06); /* ベースの薄い黒（視認はうっすら） */
+      transform-origin:center;
+      will-change: transform, opacity;
+      white-space:nowrap;
+      text-rendering:optimizeLegibility;
+      mix-blend-mode:multiply;
+      filter: drop-shadow(0 0 0 rgba(0,0,0,0));
+    }
+
+    /* モバイルでは量を減らす */
+    @media (max-width:640px){
+      .panel{ margin-top:18px; padding:20px 14px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 手を描画するレイヤー -->
+  <div class="hands-layer" id="handsLayer" aria-hidden="true"></div>
+
+  <!-- 説明パネル（これが上に乗る） -->
+  <main class="panel" role="main" aria-labelledby="title">
+    <h2 id="title">観察メモ — なぜ彼らが襲撃対象とならなかったのか</h2>
+
+    <p>
+      以下は現時点での調査メモ。映像・ログは一部破損しており、因果関係の確定には至っていない。
+      （ページ演出のため、画面の大部分が「手」の文字で覆われます）
+    </p>
+
+    <p>
+      ・被害対象: PT-001、PT-005<br>
+      ・非被害者: PT-003、PT-004、PT-006<br>
+      ・現場映像: 一部フレーム欠落（08:19〜08:20 相当）<br>
+      ・備考: 追加の非公開データベース照会中
+    </p>
+
+    <div class="footer">
+      <a class="prev" href="javascript:history.back()">戻る</a>
+    </div>
+  </main>
+
+  <script>
+    // ==== 設定 ====
+    const layer = document.getElementById('handsLayer');
+
+    // 目安の数（画面サイズに応じて決定）
+    function computeCount(){
+      const area = window.innerWidth * window.innerHeight;
+      // 1つあたりの面積目安で算出（調整可）
+      let base = Math.round(area / 8500);
+      base = Math.max(120, Math.min(800, base)); // min120, max800
+      // モバイルは控えめ
+      if(window.innerWidth <= 640) base = Math.max(60, Math.round(base * 0.45));
+      return base;
+    }
+
+    // ランダムヘルパー
+    const rand = (min, max)=> Math.random()*(max-min)+min;
+    const randInt = (min,max)=> Math.floor(rand(min,max+1));
+
+    // 生成
+    function createHands(){
+      const count = computeCount();
+      // まずクリーン
+      layer.innerHTML = '';
+      const frag = document.createDocumentFragment();
+      for(let i=0;i<count;i++){
+        const span = document.createElement('span');
+        span.className = 'hand';
+        span.textContent = '手';
+        // size: 12px〜140px
+        const size = Math.round(rand(12, 140));
+        span.style.fontSize = size + 'px';
+        // position random across viewport (allow overflow a bit)
+        const x = rand(-0.15*window.innerWidth, window.innerWidth*1.15);
+        const y = rand(-0.12*window.innerHeight, window.innerHeight*1.12);
+        span.style.left = x + 'px';
+        span.style.top = y + 'px';
+        // rotation and opacity
+        span.style.transform = `rotate(${rand(-45,45)}deg)`;
+        // opacity: larger ones more faded
+        const opacity = (size/160) * rand(0.06, 0.22);
+        span.style.opacity = opacity.toFixed(3);
+        // slight animation speed seed
+        const dur = rand(8, 22);
+        span.style.transition = `transform ${dur}s ease-in-out, opacity ${dur/2}s linear`;
+        frag.appendChild(span);
+      }
+      layer.appendChild(frag);
+      // subtle motion loop
+      animateHands();
+    }
+
+    // ほんの少し上下左右に漂わせるアニメーション（CSSトランスフォームで）
+    let animId = null;
+    function animateHands(){
+      // cancel existing
+      if(animId) { cancelAnimationFrame(animId); animId = null; }
+      const hands = Array.from(layer.children);
+      let t0 = performance.now();
+      function step(t){
+        const dt = (t - t0)/1000;
+        // small sinusoidal offsets based on index to avoid sync
+        hands.forEach((el, idx)=>{
+          const seed = (idx % 37) + 1;
+          const dx = Math.sin(dt * (0.12 + (seed%5)/40) + seed) * (seed%3 === 0 ? 3 : 2);
+          const dy = Math.cos(dt * (0.09 + (seed%7)/50) + seed) * (seed%4 === 0 ? 3 : 1.5);
+          const rot = parseFloat(el.style.transform.replace(/[^\d\.-]/g,'')) || 0;
+          el.style.transform = `translate(${dx}px, ${dy}px) rotate(${rot}deg)`;
+          // tiny opacity flicker
+          const baseOp = parseFloat(el.style.opacity) || 0.12;
+          const flick = (Math.sin(dt * (0.5 + (seed%3)/10) + seed) * 0.02);
+          el.style.opacity = Math.max(0.01, Math.min(0.35, baseOp + flick));
+        });
+        animId = requestAnimationFrame(step);
+      }
+      animId = requestAnimationFrame(step);
+    }
+
+    // Recompute on resize/orientation change (debounced)
+    let resizeTimer = null;
+    function handleResize(){
+      if(resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(()=> {
+        createHands();
+      }, 220);
+    }
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+
+    // 初回生成
+    createHands();
+
+    // Clean up on unload
+    window.addEventListener('pagehide', ()=> {
+      if(animId) cancelAnimationFrame(animId);
+    });
+  </script>
+</body>
+</html>
