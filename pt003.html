@@ -6,15 +6,47 @@
   <title>PT-003｜術後経過観察記録</title>
   <link rel="stylesheet" href="./style.css" />
   <style>
-    .green { color: #00ff7f; font-weight: 700; }
+    .green {
+      color: #00ff7f;
+      font-weight: 700;
+    }
     .content-box {
-      background: rgba(0,0,0,0.6);
-      border-radius: 10px;
-      max-width: 700px;
-      margin: 60px auto;
-      padding: 28px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      max-width: 720px;
+      margin: 80px auto;
+      padding: 40px 28px;
       color: #fff;
-      line-height: 1.8;
+      line-height: 1.9;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: clamp(20px, 5vw, 28px);
+    }
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .prev {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 8px 20px;
+      border-radius: 20px;
+      border: 1px solid #fff;
+      opacity: 0.8;
+      transition: all 0.2s ease;
+    }
+    .prev:hover {
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.15);
+    }
+    @media (max-width: 640px) {
+      .content-box {
+        margin: 40px 16px;
+        padding: 28px 16px;
+      }
     }
   </style>
 </head>
@@ -22,12 +54,13 @@
   <div class="content-box">
     <h2>PT-003｜術後経過観察記録</h2>
     <p>
-      手術後3日目より、<span class="green">移植部位に広範な発赤と水疱性の腫脹</span>が出現。
+      手術後5日目より、<span class="green">移植部位に広範な発赤と水疱性の腫脹</span>が出現。
       皮膚表面の血管が浮き上がり、異常な発熱を伴った。<br><br>
       <span class="green">症状は約2週間にわたって持続</span>したが、免疫抑制剤の調整および局所冷却処置により徐々に軽快。
       その後、皮膚色調・感覚機能ともに安定傾向を示した。<br><br>
       なお、神経伝達パターンに一部異常波形が確認されたため、引き続き経過観察中である。
     </p>
+
     <div class="footer">
       <a href="postop.html" class="prev">戻る</a>
     </div>

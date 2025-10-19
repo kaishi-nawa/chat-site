@@ -1,33 +1,66 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>被験体群別スケジュール概要</title>
-  <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>被検体群別スケジュール概要</title>
+  <link rel="stylesheet" href="./style.css" />
+  <style>
+    body {
+      color: #fff;
+    }
+    .green {
+      color: #00ff7f;
+      font-weight: 700;
+    }
+    .green-link {
+      color: #00ff7f;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .green-link:hover {
+      color: #00ff7f;
+      text-decoration: none;
+      opacity: 0.9;
+    }
+    .content-box {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      max-width: 780px;
+      margin: 80px auto;
+      padding: 36px 28px;
+      line-height: 1.9;
+    }
+    @media (max-width: 640px) {
+      .content-box {
+        margin: 40px 16px;
+        padding: 28px 18px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="content-container">
-    <div class="content-box">
-      <h2>被験体群別スケジュール概要</h2>
+  <div class="content-box">
+    <h2>被検体群別スケジュール概要</h2>
 
-      <p><a href="postop.html" class="green-link">■ 前半群（PT-001〜003）</a><br>
+    <p>
+      <a href="postop.html" class="green-link">◻️前半群（PT-001〜003）</a><br>
       手術日：2073年7月15日<br>
       初期導入群。免疫寛容プロトコルの最適化を目的に、IS-Therapyの反応曲線を詳細追跡。<br>
-      術後第4週までの神経同期率を主指標としてモニタリングを実施。
-      全員、ドナーとの親和係数は平均値を上回る安定域に収束。</p>
+      術後第4週までの神経同期率を主指標としてモニタリングを実施。<br>
+      全員、ドナーとの親和係数は平均値を上回る安定域に収束。
+    </p>
 
-      <hr>
-
-      <p><span class="green">■ 後半群（PT-004〜006）</span><br>
-      手術日：2073年8月15日<br>
-      改良型NeuroBridge™支援AIを導入した検証群。
+    <p>
+      <span class="green">◻️後半群（PT-004〜006）</span><br>
+      手術日：2073年7月25日<br>
+      改良型NeuroBridge™支援AIを導入した検証群。<br>
       前半群の結果をもとに、神経再構築アルゴリズムを再学習させた状態で臨床適用。<br>
-      一部症例で“遅延同期”現象が観測されたが、MotionLinkによる補正で正常範囲内へ復帰。</p>
+      一部症例で“遅延同期”現象が観測されたが、MotionLinkによる補正で正常範囲内へ復帰。
+    </p>
 
-      <div class="footer">
-        <a href="index.html" class="next">戻る</a>
-      </div>
+    <div class="footer">
+      <a href="page1.html" class="prev">戻る</a>
     </div>
   </div>
 </body>
