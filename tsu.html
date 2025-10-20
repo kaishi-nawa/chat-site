@@ -12,23 +12,41 @@
       <h2>榊原 岳人（主任研究員）</h2>
       <p>
         本研究の責任者。神経接続および免疫同調分野の第一人者として知られ、
-       <span class="green">「拒絶のない再生移植」</span>という理想を掲げていた。<br><br>
-
-        彼の研究は学術的にも注目を集め、国内外の学会から高い評価を受けていたが、
-        その一方で臨床応用を急ぐあまり、倫理面での議論が絶えなかった。<br><br>
-
-        また、榊原はセルフロンティア社の主要出資者である<span class="green">津崎グループ</span>と深い関係を持ち、
+        <span class="green">「拒絶のない再生移植」</span>という理想を掲げていた。<br><br>
+        彼の研究は学術的にも注目を集めていたが、臨床応用を急ぐあまり倫理的議論が絶えなかった。<br><br>
+        また、榊原は<a href="group.html" class="green link">津崎グループ</a>と深い関係を持ち、
         同グループ代表・津崎翔一の信頼を受けていた。<br><br>
-
         <a href="mio.html" class="green link">津崎翔一の娘</a>は榊原が主導した上肢再生移植の最初の被験体として登録されており、
-        彼女の症例は「拒絶反応ゼロ」を達成した唯一の成功例として社内で注目を集めていたという。
+        彼女の症例は「拒絶反応ゼロ」を達成した唯一の成功例として注目された。
       </p>
 
       <div class="footer">
-        <a href="javascript:history.back()" class="prev">戻る</a>
+        <a id="backLink" href="page3.html" class="prev">戻る</a>
       </div>
     </div>
   </div>
+
+  <script>
+  (() => {
+    const back = document.getElementById('backLink');
+    if (!back) return;
+    const allow = new Set(['page1.html', 'page2.html', 'page3.html']);
+    const params = new URLSearchParams(location.search);
+    const from = params.get('from');
+    if (from && allow.has(from)) { back.href = from; return; }
+
+    try {
+      if (document.referrer) {
+        const ref = new URL(document.referrer);
+        if (ref.origin === location.origin) {
+          const name = ref.pathname.split('/').pop();
+          if (allow.has(name)) { back.href = name; return; }
+        }
+      }
+    } catch(e){}
+  })();
+  </script>
 </body>
 </html>
+
 
