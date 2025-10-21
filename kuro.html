@@ -6,16 +6,10 @@
   <title>黒崎 誠（主任補佐／神経統合理論部門）</title>
   <link rel="stylesheet" href="./style.css">
   <style>
-    a.white-link {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      transition: 0.2s;
-    }
-    a.white-link:hover {
-      opacity: 0.85;
-      text-decoration: underline;
-    }
+    /* 緑リンク（訪問済みも常に緑） */
+    a.green-link { color:#00ff7f; text-decoration:none; font-weight:700; transition:.2s; }
+    a.green-link:hover { opacity:.85; text-decoration:underline; }
+    a.green-link:visited { color:#00ff7f; }
   </style>
 </head>
 <body>
@@ -34,9 +28,39 @@
       </p>
 
       <div class="footer">
-        <a href="javascript:history.back()" class="prev">戻る</a>
+        <!-- デフォルトの戻り先は page3.html。JSで “元ページ” に差し替える -->
+        <a id="backLink" href="page3.html" class="prev">戻る</a>
       </div>
     </div>
   </div>
+
+  <script>
+  (() => {
+    const back = document.getElementById('backLink');
+    const allow = new Set(['index.html','page1.html','page2.html','page3.html','schedule.html','group.html']);
+
+    // 1) ?from= が来てたら保存（vein09 往復でも保持）
+    const url = new URL(location.href);
+    const fromParam = url.searchParams.get('from');
+    if (fromParam) sessionStorage.setItem('kuro_from', fromParam);
+
+    // 2) 保存された “元ページ” を最優先で採用
+    let from = sessionStorage.getItem('kuro_from');
+
+    // 3) もし未保存なら、同一オリジンの referrer が許可先なら採用
+    if (!from && document.referrer) {
+      try {
+        const ref = new URL(document.referrer);
+        if (ref.origin === location.origin) {
+          const name = ref.pathname.split('/').pop();
+          if (allow.has(name)) from = name;
+        }
+      } catch(e){}
+    }
+
+    // 4) 差し替え（vein09.html には戻らない）
+    if (from && allow.has(from)) back.href = from;
+  })();
+  </script>
 </body>
 </html>
