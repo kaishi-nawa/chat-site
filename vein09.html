@@ -6,57 +6,50 @@
   <title>Vein 09｜非合法臓器・組織供給ネットワーク</title>
   <link rel="stylesheet" href="./style.css" />
   <style>
-    /* collapse.html と同等の“真っ黒・白字”デザイン */
     body {
       margin: 0;
       font-family: "Noto Sans JP", sans-serif;
       background: #000;
       color: #fff;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      min-height: 100dvh;
+      min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
-    }
-
-    .content-container {
-      width: 100%;
+      align-items: center;
       padding: 40px 20px;
       box-sizing: border-box;
-      display:flex;
-      justify-content:center;
     }
 
     .content-box {
       background: #000;
-      color: #fff;
-      max-width: 900px;
+      max-width: 860px;
       width: 100%;
       line-height: 1.9;
       text-align: left;
       padding: 36px 28px;
       border-radius: 10px;
-      box-shadow: none;
     }
 
     h1 {
-      margin: 0 0 18px 0;
-      font-size: clamp(20px, 4.5vw, 28px);
-      font-weight: 700;
+      font-size: clamp(20px, 5vw, 30px);
+      margin-bottom: 20px;
       text-align: center;
+      color: #ff4040;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
 
-    p, ul {
+    p, li {
       color: #fff;
       font-size: 16px;
-      margin-bottom: 12px;
     }
 
-    ul { padding-left: 20px; }
+    .red {
+      color: #ff4040;
+      font-weight: 600;
+    }
 
-    .muted {
-      opacity: 0.9;
+    ul {
+      padding-left: 20px;
     }
 
     .footer {
@@ -65,50 +58,50 @@
     }
 
     a.prev {
-      color: #fff;
+      color: white;
       text-decoration: none;
       font-size: 16px;
       padding: 8px 20px;
       border-radius: 20px;
       border: 1px solid #fff;
-      opacity: 0.9;
-      transition: all 0.18s ease;
+      opacity: 0.8;
+      transition: all 0.2s ease;
     }
-    a.prev:hover { opacity: 1; background: rgba(255,255,255,0.04); }
 
-    /* モバイル調整 */
-    @media (max-width: 640px) {
-      .content-box { padding: 24px 16px; }
-      p { font-size: 15px; }
+    a.prev:hover {
+      opacity: 1;
+      background: rgba(255,255,255,0.1);
     }
   </style>
 </head>
 <body>
-  <div class="content-container">
-    <div class="content-box" role="main" aria-labelledby="vein09-title">
-      <h1 id="vein09-title">Vein 09｜非合法臓器・組織供給ネットワーク</h1>
+  <div class="content-box">
+    <h1>Vein 09｜非合法臓器・組織供給ネットワーク</h1>
 
-      <p class="muted">
-        Vein 09（ヴェイン・ナイン）は、かつて存在した複数の供給ラインのうち<span class="red">第9番目の経路を指す内部コード</span>であり、
-        実働が確認された唯一のルートとされている。国内外の再生医療研究機関に対し、
-        倫理審査を経ていない生体組織・神経・臓器を供給していた<span class="red">非公式流通ネットワーク</span>である。
-      </p>
+    <p>
+      Vein 09（ヴェイン・ナイン）は、かつて存在した複数の供給ラインのうち第9番目の経路を指す内部コードであり、
+      実働が確認された唯一のルートとされている。
+      国内外の再生医療研究機関に対し、倫理審査を経ていない生体組織・神経・臓器を供給していた<span class="red">非公式流通ネットワーク</span>である。<br><br>
+    </p>
 
-      <p><strong>主な構造</strong></p>
-      <ul>
-        <li><strong>上層部（Core）</strong>：資金・情報を管理する匿名財団。<span class="red">実態は津崎グループ傘下の海外子会社。</span>政治家・製薬企業・投資家が間接的に関与している。</li>
-        <li><strong>中間層（Broker）</strong>：現場調整・契約・偽造データ作成を担当。<span class="red">黒崎が接触したのはこの層。</span>各ブローカーにはコードネームがあり、「血管（Vein）」の枝のように番号で管理されている。</li>
-        <li><strong>下層（Collector）</strong>：医療機関・<span class="red">刑務所</span>・火葬場・戦地から“原料”を調達する実動部隊。死体処理業者・警備請負会社・研究下請けを装うケースが多い。</li>
-      </ul>
+    <p><strong>主な構造</strong></p>
+    <ul>
+      <li><strong>上層部（Core）</strong>：資金・情報を管理する匿名財団。実態は津崎グループ傘下の海外子会社。</span>
+      政治家・製薬企業・投資家が間接的に関与している。</li>
+      <li><strong>中間層（Broker）</strong>：現場調整・契約・偽造データ作成を担当。
+      <span class="red">黒崎が接触したのはこの層。</span>各ブローカーにはコードネームがあり、
+      「血管（Vein）」の枝のように番号で管理されている。</li>
+      <li><strong>下層（Collector）</strong>：医療機関・<span class="red">刑務所</span>・火葬場・戦地から“原料”を調達する実動部隊。
+      死体処理業者・警備請負会社・研究下請けを装うケースも多い。</li>
+    </ul>
 
-      <p class="muted">
-        Vein 09 は一見すると独立した複数組織の集合体に見えるが、通信記録・資金フローの分析により、
-        津崎グループの影響下にある一体的ネットワークであった可能性が高い。
-      </p>
+    <p>
+      Vein 09 は一見すると独立した複数組織の集合体に見えるが、
+      通信記録・資金フローの分析により、<span class="red">津崎グループの影響下</span>にある一体的ネットワークであった可能性が高い。
+    </p>
 
-      <div class="footer">
-        <a href="kuro.html" class="prev">戻る</a>
-      </div>
+    <div class="footer">
+      <a href="kuro.html" class="prev">戻る</a>
     </div>
   </div>
 </body>
