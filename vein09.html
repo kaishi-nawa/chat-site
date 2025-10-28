@@ -6,38 +6,72 @@
   <title>Vein 09｜非合法臓器・組織供給ネットワーク</title>
   <link rel="stylesheet" href="./style.css" />
   <style>
-    body { margin:0; font-family:"Noto Sans JP",sans-serif; background:#000; color:#fff;
-           min-height:100vh; display:flex; justify-content:center; align-items:center;
-           padding:40px 20px; box-sizing:border-box; }
-    .content-box { background:#000; max-width:860px; width:100%; line-height:1.9;
-                   text-align:left; padding:36px 28px; border-radius:10px; }
-    h1 { font-size:clamp(20px,5vw,30px); margin-bottom:20px; text-align:center;
-         color:#ff4040; font-weight:700; letter-spacing:1px; }
-    p, li { font-size:16px; color:#fff; }
-    .red { color:#ff4040; font-weight:600; }
-    ul { padding-left:20px; }
-    .footer { text-align:center; margin-top:24px; }
-    a.prev { color:#fff; text-decoration:none; font-size:16px; padding:8px 20px;
-             border-radius:20px; border:1px solid #fff; opacity:.8; transition:.2s; }
-    a.prev:hover { opacity:1; background:rgba(255,255,255,.1); }
+    /* === このページは共通の背景レイヤーを完全に無効化 === */
+    html, body.no-bg { background:#000 !important; }
+    /* グローバルで使っている body::before の固定背景を殺す */
+    body.no-bg::before {
+      content: none !important;
+      display: none !important;
+      background: none !important;
+    }
+    /* 万が一、コンテナ側で背景を敷いている場合に備えて無効化 */
+    .chat-container, .content-container { background: none !important; }
+
+    /* ===== 本ページのスタイル ===== */
+    body.no-bg {
+      margin: 0;
+      font-family: "Noto Sans JP", sans-serif;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      box-sizing: border-box;
+    }
+    .content-box {
+      background: #000; /* 完全な黒（透過なし） */
+      max-width: 860px;
+      width: 100%;
+      line-height: 1.9;
+      text-align: left;
+      padding: 36px 28px;
+      border-radius: 10px;
+    }
+    h1 {
+      font-size: clamp(20px, 5vw, 30px);
+      margin-bottom: 20px;
+      text-align: center;
+      color: #ff4040;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    p, li { font-size: 16px; color: #fff; }
+    .red { color: #ff4040; font-weight: 600; }
+    ul { padding-left: 20px; }
+    .footer { text-align: center; margin-top: 24px; }
+    a.prev {
+      color: #fff; text-decoration: none; font-size: 16px; padding: 8px 20px;
+      border-radius: 20px; border: 1px solid #fff; opacity: .8; transition: .2s;
+    }
+    a.prev:hover { opacity: 1; background: rgba(255,255,255,.1); }
   </style>
 </head>
-<body>
+<body class="no-bg">
   <div class="content-box">
     <h1>Vein 09｜非合法臓器・組織供給ネットワーク</h1>
 
     <p>
       <span class="red">Vein 09（ヴェイン・ナイン）</span>は、かつて存在した複数の供給ラインのうち第9番目の経路を指す内部コードであり、
       実働が確認された唯一のルートとされている。<br>
-      国内外の再生医療研究機関に対し、倫理審査を経ていない
-      <span class="red">生体組織・神経・臓器</span>を供給していた
-      <span class="red">非公式流通ネットワーク</span>である。
+      国内外の再生医療研究機関に対し、<倫理審査を経ていない class="red">倫理審査を経ていない
+      生体組織・神経・臓器を供給していた</span>非公式流通ネットワークである。
     </p>
 
     <p><strong>主な構造</strong></p>
     <ul>
       <li><strong>上層部（Core）</strong>：資金・情報を管理する匿名財団。実態は津崎グループ傘下の海外子会社。
-      <span class="red">政治家・製薬企業・投資家</span>が間接的に関与している。</li>
+      政治家・製薬企業・投資家が間接的に関与している。</li>
       <li><strong>中間層（Broker）</strong>：現場調整・契約・偽造データ作成を担当。
       <span class="red">黒崎が接触したのはこの層。</span>各ブローカーにはコードネームがあり、
       「血管（Vein）」の枝のように番号で管理されている。</li>
@@ -52,7 +86,6 @@
     </p>
 
     <div class="footer">
-      <!-- kuro に戻る。JSで ?from= を付け直す -->
       <a id="backKuro" href="kuro.html" class="prev">戻る</a>
     </div>
   </div>
@@ -61,7 +94,6 @@
   // kuro から渡された “元ページ” 情報を維持して戻す
   (() => {
     const a = document.getElementById('backKuro');
-    // 1) kuro.html?from=... から来た場合は、その from を復元
     let from = null;
     try {
       if (document.referrer) {
@@ -70,12 +102,9 @@
         from = p.get('from') || null;
       }
     } catch(e){}
-
-    // 2) セッションにも保存されていればフォールバックで使う
     if (!from) {
       try { from = sessionStorage.getItem('kuro_from'); } catch(e){}
     }
-
     if (from) a.href = `kuro.html?from=${encodeURIComponent(from)}`;
   })();
   </script>
