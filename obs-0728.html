@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>経過観察ログ選択</title>
+  <title>経過観察ログ</title>
   <link rel="stylesheet" href="./style.css">
   <style>
     .chat-container {
@@ -31,13 +31,13 @@
       flex-direction: column;
       gap: 16px;
       width: 100%;
-      max-width: 320px;
+      max-width: 320px; /* ←最初の選択画面くらいの幅 */
     }
     .menu-button {
       display: block;
       width: 100%;
       text-align: center;
-      padding: 12px 0;
+      padding: 14px 0;
       background: rgba(0,0,0,0.55);
       border: 1px solid #fff;
       border-radius: 12px;
@@ -48,7 +48,9 @@
     .menu-button:hover {
       background: rgba(255,255,255,0.1);
     }
-    .footer { margin-top: 28px; }
+    .footer {
+      margin-top: 28px;
+    }
   </style>
 </head>
 <body>
@@ -58,6 +60,7 @@
       <a href="obs-0728-chat.html" class="menu-button">2073年 7月28日</a>
     </div>
     <div class="footer">
+      <!-- ここはmioに戻るでOK -->
       <a href="mio.html" class="prev">戻る</a>
     </div>
   </div>
